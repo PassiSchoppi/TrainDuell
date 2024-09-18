@@ -1,16 +1,11 @@
 # trainduell
 
-A new Flutter project.
+Chat and play games with fellow train and tram travelers.
 
-## Getting Started
+Kanban Board:
+https://github.com/users/PassiSchoppi/projects/4
 
-This project is a starting point for a Flutter application.
+AWS:
+https://awsacademy.instructure.com/courses/92775/modules/items/8541315
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Lambda in ./aws/lambda/python muss nach bearbeiten zu .zip komprimiert und neu hochgeladen werden.

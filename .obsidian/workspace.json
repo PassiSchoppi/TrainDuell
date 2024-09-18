@@ -1,0 +1,157 @@
+{
+  "main": {
+    "id": "98f9ca3a950ce654",
+    "type": "split",
+    "children": [
+      {
+        "id": "6f11c791f0f8593d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6708ebd369c53524",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "12da58ebdd1407e7",
+    "type": "split",
+    "children": [
+      {
+        "id": "e2ba8c89fb475ebe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f2d904fcbce5d394",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9991d380c2778074",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5492ce1013178844",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d4fab65333b6e261",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc0713f1924bb3f4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b105c45a032070cd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "de91014dacf73742",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e612bf8861fdae4d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "dd690388ed94e423",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "6708ebd369c53524",
+  "lastOpenFiles": [
+    "aws/lambda/python.zip",
+    "aws/lambda/python.zip.tmp",
+    "StoryBoard.excalidraw.md",
+    "aws/lambda/python/lambda_function.py",
+    "aws/lambda/python/redis-5.0.8.dist-info/WHEEL",
+    "aws/lambda/python/redis-5.0.8.dist-info/REQUESTED",
+    "aws/lambda/python/redis-5.0.8.dist-info/LICENSE",
+    "aws/lambda/python/redis-5.0.8.dist-info/top_level.txt",
+    "aws/lambda/python/redis-5.0.8.dist-info/METADATA",
+    "aws/lambda/python/redis-5.0.8.dist-info/RECORD",
+    "aws/lambda/python/redis-5.0.8.dist-info/INSTALLER",
+    "Untitled.md"
+  ]
+}
