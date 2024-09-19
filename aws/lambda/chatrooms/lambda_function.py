@@ -2,7 +2,7 @@ import os
 import redis
 import logging
 import json
-import datetime
+from datetime import datetime
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -40,7 +40,30 @@ def lambda_handler(event, context):
         # Determine the HTTP method (GET or POST)
         http_method = event['httpMethod']
 
-        if http_method == 'POST':
+        if http_method == 'GET':
+            # Handle GET request to retrieve the value for a given chat_room_id
+            chat_room_id = event['queryStringParameters'].get('chat_room_id', None)
+            if not chat_room_id:
+                return {
+                    'statusCode': 400,
+                    'body': json.dumps('Missing chat_room_id parameter in GET request')
+                }
+
+            logger.info(f"Getting value for chat_room_id: {chat_room_id}")
+            value = client.zrange(f'{chat_room_id}', 0, -1, withscores=True)
+
+            if value:
+                return {
+                    'statusCode': 200,
+                    'body': json.dumps(value)
+                }
+            else:
+                return {
+                    'statusCode': 404,
+                    'body': json.dumps(f"Key '{chat_room_id}' not found in Redis")
+                }
+
+        elif http_method == 'POST':
             # Handle POST request to set a chat_room_id-value pair
             body = json.loads(event['body'])
             chat_room_id = body.get('chat_room_id', None)
@@ -54,6 +77,7 @@ def lambda_handler(event, context):
                 }
 
             logger.info(f"Sending message: {message} name: {name} chat_room_id: {chat_room_id}")
+            message = f"{name}: {message}"
             now = datetime.now().timestamp()
             client.zadd(f"{chat_room_id}", {message: now})
 
