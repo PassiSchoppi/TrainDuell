@@ -1,18 +1,20 @@
 {
   "main": {
-    "id": "46262641476b5d11",
+    "id": "98f9ca3a950ce654",
     "type": "split",
     "children": [
       {
-        "id": "4c3a6ff19154bdd3",
+        "id": "6f11c791f0f8593d",
         "type": "tabs",
         "children": [
           {
-            "id": "fb3f836713432892",
+            "id": "6708ebd369c53524",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "excalidraw",
+              "state": {
+                "file": "Schnittstelle.excalidraw.md"
+              }
             }
           }
         ]
@@ -21,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "caa7dfa811bd031f",
+    "id": "12da58ebdd1407e7",
     "type": "split",
     "children": [
       {
-        "id": "7565c34d94b367eb",
+        "id": "e2ba8c89fb475ebe",
         "type": "tabs",
         "children": [
           {
-            "id": "64a6f45a3981a39c",
+            "id": "f2d904fcbce5d394",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +41,7 @@
             }
           },
           {
-            "id": "aeb35da3d598cddc",
+            "id": "9991d380c2778074",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,7 +56,7 @@
             }
           },
           {
-            "id": "ec94d58f3371bac3",
+            "id": "5492ce1013178844",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -68,19 +70,20 @@
     "width": 300
   },
   "right": {
-    "id": "4f274eabd3e6b16a",
+    "id": "d4fab65333b6e261",
     "type": "split",
     "children": [
       {
-        "id": "b1a0043cfb38c6e7",
+        "id": "fc0713f1924bb3f4",
         "type": "tabs",
         "children": [
           {
-            "id": "417bc047d242ad9a",
+            "id": "b105c45a032070cd",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Schnittstelle.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,18 +95,19 @@
             }
           },
           {
-            "id": "7241f74879964958",
+            "id": "de91014dacf73742",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Schnittstelle.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "07d8c253734f3ed3",
+            "id": "e612bf8861fdae4d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -114,11 +118,13 @@
             }
           },
           {
-            "id": "ebfbc1a0de931277",
+            "id": "dd690388ed94e423",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Schnittstelle.excalidraw.md"
+              }
             }
           }
         ]
@@ -130,28 +136,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Schnellauswahl öffnen": false,
-      "graph:Graphen-Ansicht öffnen": false,
-      "canvas:Neuen Canvas erstellen": false,
-      "daily-notes:Heutige Notiz öffnen": false,
-      "templates:Vorlage einfügen": false,
-      "command-palette:Befehlspalette öffnen": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "64a6f45a3981a39c",
+  "active": "6708ebd369c53524",
   "lastOpenFiles": [
+    "_distutils_hack/__pycache__/__init__.cpython-311.pyc",
+    "_distutils_hack/__pycache__/override.cpython-311.pyc",
+    "_distutils_hack/__pycache__",
+    "_distutils_hack/__init__.py",
+    "_distutils_hack/override.py",
+    "_distutils_hack",
+    "zope.interface-7.0.3.dist-info/RECORD",
+    "zope.interface-7.0.3.dist-info/WHEEL",
+    "zope.interface-7.0.3.dist-info/namespace_packages.txt",
+    "zope.interface-7.0.3.dist-info/top_level.txt",
+    "zope.interface-7.0.3.dist-info/METADATA",
     "TrainDuel.md",
     "Storyboard Trainduel.md",
-    "aws/lambda/python/redis/commands/timeseries/__init__.py",
-    "aws/lambda/python/redis/commands/timeseries/utils.py",
-    "aws/lambda/python/redis/commands/timeseries/info.py",
-    "aws/lambda/python/redis/commands/timeseries/commands.py",
-    "aws/lambda/python/redis/commands/search/__init__.py",
-    "aws/lambda/python/redis/commands/search/_util.py",
-    "aws/lambda/python/redis/commands/search/suggestion.py",
-    "aws/lambda/python/redis/commands/search/result.py",
-    "aws/lambda/python/redis/commands/search/reducers.py",
-    "aws/lambda/python/redis/commands/search/querystring.py"
+    "Untitled.md",
+    "Schnittstelle.excalidraw.md",
+    "StoryBoard.excalidraw.md"
   ]
 }
