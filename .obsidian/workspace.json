@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "98f9ca3a950ce654",
+    "id": "46262641476b5d11",
     "type": "split",
     "children": [
       {
-        "id": "6f11c791f0f8593d",
+        "id": "4c3a6ff19154bdd3",
         "type": "tabs",
         "children": [
           {
-            "id": "6708ebd369c53524",
+            "id": "fb3f836713432892",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Schnittstelle.excalidraw.md"
+                "file": "TrainDuel.md"
               }
             }
           }
@@ -23,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "12da58ebdd1407e7",
+    "id": "caa7dfa811bd031f",
     "type": "split",
     "children": [
       {
-        "id": "e2ba8c89fb475ebe",
+        "id": "7565c34d94b367eb",
         "type": "tabs",
         "children": [
           {
-            "id": "f2d904fcbce5d394",
+            "id": "64a6f45a3981a39c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -41,7 +41,7 @@
             }
           },
           {
-            "id": "9991d380c2778074",
+            "id": "aeb35da3d598cddc",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -56,7 +56,7 @@
             }
           },
           {
-            "id": "5492ce1013178844",
+            "id": "ec94d58f3371bac3",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -70,20 +70,20 @@
     "width": 300
   },
   "right": {
-    "id": "d4fab65333b6e261",
+    "id": "4f274eabd3e6b16a",
     "type": "split",
     "children": [
       {
-        "id": "fc0713f1924bb3f4",
+        "id": "b1a0043cfb38c6e7",
         "type": "tabs",
         "children": [
           {
-            "id": "b105c45a032070cd",
+            "id": "417bc047d242ad9a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Schnittstelle.excalidraw.md",
+                "file": "TrainDuel.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,19 +95,19 @@
             }
           },
           {
-            "id": "de91014dacf73742",
+            "id": "7241f74879964958",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Schnittstelle.excalidraw.md",
+                "file": "TrainDuel.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "e612bf8861fdae4d",
+            "id": "07d8c253734f3ed3",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -118,12 +118,12 @@
             }
           },
           {
-            "id": "dd690388ed94e423",
+            "id": "ebfbc1a0de931277",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Schnittstelle.excalidraw.md"
+                "file": "TrainDuel.md"
               }
             }
           }
@@ -136,32 +136,31 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Schnellauswahl öffnen": false,
+      "graph:Graphen-Ansicht öffnen": false,
+      "canvas:Neuen Canvas erstellen": false,
+      "daily-notes:Heutige Notiz öffnen": false,
+      "templates:Vorlage einfügen": false,
+      "command-palette:Befehlspalette öffnen": false,
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "6708ebd369c53524",
+  "active": "fb3f836713432892",
   "lastOpenFiles": [
-    "aws/lambda/chatrooms/chatrooms.zip",
-    "aws/lambda/chatrooms/chatrooms.zip.tmp",
-    "aws/lambda/chatrooms.zip",
-    "aws/lambda/chatrooms.zip.tmp",
-    "aws/lambda/chatrooms/_distutils_hack/__pycache__/__init__.cpython-311.pyc",
-    "aws/lambda/chatrooms/_distutils_hack/__pycache__/override.cpython-311.pyc",
-    "aws/lambda/chatrooms/_distutils_hack/__init__.py",
-    "aws/lambda/chatrooms/_distutils_hack/__pycache__",
-    "aws/lambda/chatrooms/_distutils_hack/override.py",
-    "aws/lambda/chatrooms/_distutils_hack",
-    "aws/lambda/chatrooms/zope.interface-7.0.3.dist-info/WHEEL",
-    "TrainDuel.md",
-    "Storyboard Trainduel.md",
-    "Untitled.md",
+    "lib/zuginfo.dart",
+    "lib/lobbysuche.dart",
+    "lib/game.dart",
+    "lib/end.dart",
+    "lib/chat.dart",
+    "aws/lambda/example/redis/commands/json/path.py",
+    "aws/lambda/example/redis/commands/timeseries/__init__.py",
+    "aws/lambda/example/redis/commands/search/querystring.py",
+    "aws/lambda/example/redis/commands/timeseries/utils.py",
+    "aws/lambda/example/redis/commands/timeseries/info.py",
+    "aws/lambda/example/redis/commands/search/suggestion.py",
     "Schnittstelle.excalidraw.md",
-    "StoryBoard.excalidraw.md"
+    "Storyboard Trainduel.md",
+    "README.md",
+    "TrainDuel.md"
   ]
 }
