@@ -141,6 +141,8 @@
   },
   "active": "64a6f45a3981a39c",
   "lastOpenFiles": [
+    "TrainDuel.md",
+    "Storyboard Trainduel.md",
     "aws/lambda/python/redis/commands/timeseries/__init__.py",
     "aws/lambda/python/redis/commands/timeseries/utils.py",
     "aws/lambda/python/redis/commands/timeseries/info.py",
@@ -150,9 +152,6 @@
     "aws/lambda/python/redis/commands/search/suggestion.py",
     "aws/lambda/python/redis/commands/search/result.py",
     "aws/lambda/python/redis/commands/search/reducers.py",
-    "aws/lambda/python/redis/commands/search/querystring.py",
-    "aws/lambda/python/redis/commands/search/query.py",
-    "TrainDuel.md",
-    "Storyboard Trainduel.md"
+    "aws/lambda/python/redis/commands/search/querystring.py"
   ]
 }

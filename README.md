@@ -1,4 +1,9 @@
 # trainduell
+<<<<<<< Updated upstream
+=======
+
+A new Flutter project.
+>>>>>>> Stashed changes
 
 Chat and play games with fellow train and tram travelers.
 
