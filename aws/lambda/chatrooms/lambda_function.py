@@ -14,7 +14,6 @@ REDIS_PASSWORD = os.getenv('REDIS_PASSWORD', None)
 
 def connect_to_redis():
     try:
-        logger.info(f'Connecting to Redis at {URL}:{REDIS_PORT}')
         # Connect to Redis instance
         client = redis.StrictRedis(
             host=URL,
@@ -23,10 +22,6 @@ def connect_to_redis():
             ssl=True,  # Enable SSL if required (e.g., ElastiCache)
             decode_responses=True
         )
-        # Ping the Redis server to test the connection
-        ping_response = client.ping()
-        if ping_response:
-            logger.info("Successfully connected to Redis!")
         return client
     except Exception as e:
         logger.error(f"Failed to connect to Redis: {e}")
