@@ -11,7 +11,7 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  List<String> messages = [];
+  List<Map<String, String>> messages = [];
   TextEditingController messageController = TextEditingController();
   bool isLoading = true;
 
@@ -28,7 +28,34 @@ class _ChatState extends State<Chat> {
     if (response.statusCode == 200) {
       List<dynamic> chatData = jsonDecode(response.body);
       setState(() {
-        messages = chatData.map((chat) => chat.toString()).toList();
+        messages = chatData.map((chat) {
+          if (chat == null){
+            return{
+              'sender': '---',
+              'message': '---'
+            };
+          }
+          final cleanChat = chat.toString().replaceAll(RegExp(r'[\[\]]'), ''); // Remove brackets
+          final parts = cleanChat.split(': '); // Split into "sender" and the rest of the message
+
+          final lastCommaIndex = parts[1].lastIndexOf(', ');
+
+          final message = parts[1].substring(0, lastCommaIndex); // Message up to the last comma
+          final timestampString = parts[1].substring(lastCommaIndex + 2); // Timestamp after the last comma
+
+          final timestamp = double.tryParse(timestampString) ?? 0;
+          final dateTime = DateTime.fromMillisecondsSinceEpoch((timestamp * 1000).toInt());
+          final formattedTime = "${dateTime.hour.toString().padLeft(2, '0')}:"
+              "${dateTime.minute.toString().padLeft(2, '0')}:"
+              "${dateTime.second.toString().padLeft(2, '0')}";
+
+          return {
+            'sender': parts[0],
+            'message': "$message",
+            'time': "$formattedTime",
+          };
+
+        }).toList();
         isLoading = false;
       });
     } else {
@@ -37,6 +64,47 @@ class _ChatState extends State<Chat> {
         isLoading = false;
       });
     }
+  }
+
+  // Build chat bubble based on the sender
+  Widget buildChatBubble(Map<String, String> chat) {
+    bool isMe = chat['sender'] == 'Leander';
+    return Align(
+      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        decoration: BoxDecoration(
+          color: isMe ? Colors.blueAccent : Colors.grey[300],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: [
+            Text(
+              chat['sender']!,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: isMe ? Colors.white : Colors.black,
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              chat['message']!,
+              style: TextStyle(
+                color: isMe ? Colors.white : Colors.black,
+              ),
+            ),
+            Text(
+              chat['time']!,
+              style: TextStyle(
+                color: isMe ? Colors.grey[300] : Colors.grey[800],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   // Send message to the server
@@ -48,7 +116,7 @@ class _ChatState extends State<Chat> {
       },
       body: jsonEncode(<String, String>{
         'message': message,
-        'name': "Pascal",
+        'name': "Leander",
         'chat_room_id': "1"
       }),
     );
@@ -68,7 +136,7 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat with Leander'),
+        title: Text('Chat with Pascal'),
       ),
       body: Column(
         children: <Widget>[
@@ -78,9 +146,7 @@ class _ChatState extends State<Chat> {
                 : ListView.builder(
               itemCount: messages.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(messages[index]),
-                );
+                return buildChatBubble(messages[index]);
               },
             ),
           ),
