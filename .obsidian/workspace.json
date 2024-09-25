@@ -147,6 +147,7 @@
   },
   "active": "fb3f836713432892",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "pubspec.yaml~",
     "build/1ed8c219",
     "build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar",
@@ -159,6 +160,21 @@
     "lib/lobbysuche.dart",
     "lib/game.dart",
     "lib/end.dart",
+=======
+    "lib/main.dart~",
+    "build/84042280",
+    "build/flutter_assets/shaders/ink_sparkle.frag.spirv",
+    "build/flutter_assets/shaders/ink_sparkle.frag",
+    "build/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",
+    "build/flutter_assets/packages/cupertino_icons/assets",
+    "build/flutter_assets/packages/cupertino_icons",
+    "build/flutter_assets/fonts/MaterialIcons-Regular.otf",
+    "build/flutter_assets/shaders",
+    "build/flutter_assets/NOTICES",
+    "build/flutter_assets/packages",
+    "Pasted Image 20240924134013_766.png",
+    "Pasted Image 20240924133940_341.png",
+>>>>>>> Stashed changes
     "Schnittstelle.excalidraw.md",
     "Storyboard Trainduel.md",
     "README.md"

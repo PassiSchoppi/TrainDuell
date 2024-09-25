@@ -61,3 +61,4 @@ app.*.map.json
 /aws/lambda/chatrooms/zope.interface-7.0.3.dist-info/
 /aws/lambda/chatrooms/distutils-precedence.pth
 /aws/lambda/chatrooms/zope.interface-7.0.3-py3.11-nspkg.pth
+.obsidian/workspace.json

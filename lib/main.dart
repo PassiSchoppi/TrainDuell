@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TrainDuel',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(236, 0, 22, 2)),
         useMaterial3: true,
       ),
       home: const Chat(),// MyHomePage(title: 'TrainDuell'),
@@ -33,7 +33,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _station = 'Gera'; // Station Placeholder
-  String _time = '13:05'; // Time Placeholder
+  TimeOfDay _selectedTime = TimeOfDay(hour: 13, minute: 05); // Uhrzeit Placeholder
+
+  // Funktion zur Auswahl der Uhrzeit
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _selectedTime,
+    );
+    if (picked != null && picked != _selectedTime) {
+      setState(() {
+        _selectedTime = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,22 +92,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(height: 20),
-            // Uhrzeit: 13:05
+            // Uhrzeit Auswahl Button
             Row(
               children: [
                 const Text('Uhrzeit:', style: TextStyle(fontSize: 18)),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      hintText: _time,
+                  child: ElevatedButton(
+                    onPressed: () => _selectTime(context),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      textStyle: const TextStyle(fontSize: 18),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        _time = value;
-                      });
-                    },
+                    child: Text(
+                      '${_selectedTime.format(context)}',
+                    ),
                   ),
                 ),
               ],
