@@ -35,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _station = 'Gera'; // Station Placeholder
-  TimeOfDay _selectedTime = TimeOfDay(hour: 13, minute: 05); // Uhrzeit Placeholder
+  TimeOfDay _selectedTime = TimeOfDay.now(); // Uhrzeit Placeholder
 
   // Funktion zur Auswahl der Uhrzeit
   Future<void> _selectTime(BuildContext context) async {
@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _selectedTime = picked;
       });
     }
+    print(_selectedTime.hour.toString());
   }
 
   @override
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // "Zug Suchen" Button
             ElevatedButton(
               onPressed: () {
-                print(ApiService().callLambdaFunction());
+                print(ApiService().callLambdaFunction(_selectedTime.hour));
               },
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 20),
