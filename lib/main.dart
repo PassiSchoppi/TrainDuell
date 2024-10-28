@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'Zugsuchen.dart';
 import 'chat.dart';
 
 void main() {
@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(236, 0, 22, 2)),
         useMaterial3: true,
       ),
+<<<<<<< Updated upstream
       home: const MyHomePage(title: 'TrainDuell'), //const Chat(),//
+=======
+      home: const MyHomePage(title: 'TrainDuell'),// MyHomePage(title: 'TrainDuell'),
+>>>>>>> Stashed changes
     );
   }
 }
@@ -63,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // "Zug Suchen" Button
             ElevatedButton(
               onPressed: () {
-                // Hier kommt die Suchfunktion
+                print(ApiService().callLambdaFunction());
               },
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 20),
