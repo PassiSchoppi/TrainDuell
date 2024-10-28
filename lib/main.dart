@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(236, 0, 22, 2)),
         useMaterial3: true,
       ),
-      home: const Chat(),// MyHomePage(title: 'TrainDuell'),
+      home: const MyHomePage(title: 'TrainDuell'), //const Chat(),//
     );
   }
 }

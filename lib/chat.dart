@@ -23,37 +23,45 @@ class _ChatState extends State<Chat> {
 
   // Fetch latest chats from the server
   Future<void> fetchChats() async {
-    final response = await http.get(Uri.parse('https://59x6pn8my4.execute-api.us-east-1.amazonaws.com/public/chat?chat_room_id=1'));
+    final response = await http.get(Uri.parse('https://gbn3noq85h.execute-api.us-east-1.amazonaws.com/prod?chat_room_id=3'));
 
     if (response.statusCode == 200) {
       List<dynamic> chatData = jsonDecode(response.body);
       setState(() {
         messages = chatData.map((chat) {
-          if (chat == null){
+          try {
+            if(chat == null) {
+              return{
+                'sender': '---',
+                'message': '---',
+                'time': '---'
+              };
+            }
+
+            // print(json.decode(chat));
+            var message = json.decode(chat.toString())[0];
+
+            final timestampString = json.decode(chat.toString())[1]
+                .toString(); // Timestamp after the last comma
+            final timestamp = double.tryParse(timestampString) ?? 0;
+            final dateTime = DateTime.fromMillisecondsSinceEpoch(
+                (timestamp * 1000).toInt());
+            final formattedTime = "${dateTime.hour.toString().padLeft(2, '0')}:"
+                "${dateTime.minute.toString().padLeft(2, '0')}:"
+                "${dateTime.second.toString().padLeft(2, '0')}";
+
+            return {
+              'sender': message['name'].toString(),
+              'message': message['message'].toString(),
+              'time': formattedTime,
+            };
+          } catch (e) {
             return{
               'sender': '---',
-              'message': '---'
+              'message': '---',
+              'time': '---'
             };
           }
-          final cleanChat = chat.toString().replaceAll(RegExp(r'[\[\]]'), ''); // Remove brackets
-          final parts = cleanChat.split(': '); // Split into "sender" and the rest of the message
-
-          final lastCommaIndex = parts[1].lastIndexOf(', ');
-
-          final message = parts[1].substring(0, lastCommaIndex); // Message up to the last comma
-          final timestampString = parts[1].substring(lastCommaIndex + 2); // Timestamp after the last comma
-
-          final timestamp = double.tryParse(timestampString) ?? 0;
-          final dateTime = DateTime.fromMillisecondsSinceEpoch((timestamp * 1000).toInt());
-          final formattedTime = "${dateTime.hour.toString().padLeft(2, '0')}:"
-              "${dateTime.minute.toString().padLeft(2, '0')}:"
-              "${dateTime.second.toString().padLeft(2, '0')}";
-
-          return {
-            'sender': parts[0],
-            'message': "$message",
-            'time': "$formattedTime",
-          };
 
         }).toList();
         isLoading = false;
@@ -109,16 +117,21 @@ class _ChatState extends State<Chat> {
 
   // Send message to the server
   Future<void> sendMessage(String message) async {
+    var data = {
+      'message': message,
+      'name': "Pascal"
+    };
+    var stringified_message = jsonEncode(data);
+    var message_json = {
+      'message': stringified_message,
+      'chat_room_id': "3"
+    };
     final response = await http.post(
-      Uri.parse('https://59x6pn8my4.execute-api.us-east-1.amazonaws.com/public/chat'),
+      Uri.parse('https://gbn3noq85h.execute-api.us-east-1.amazonaws.com/prod'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{
-        'message': message,
-        'name': "Leander",
-        'chat_room_id': "1"
-      }),
+      body: jsonEncode(message_json),
     );
 
     if (response.statusCode == 200) {
