@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'global.dart';
 
 class Chat extends StatefulWidget {
 
@@ -11,6 +12,8 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+  User user = User();
+
   List<Map<String, String>> messages = [];
   TextEditingController messageController = TextEditingController();
   bool isLoading = true;
@@ -23,7 +26,7 @@ class _ChatState extends State<Chat> {
 
   // Fetch latest chats from the server
   Future<void> fetchChats() async {
-    final response = await http.get(Uri.parse('https://gbn3noq85h.execute-api.us-east-1.amazonaws.com/prod?chat_room_id=3'));
+    final response = await http.get(Uri.parse('https://gbn3noq85h.execute-api.us-east-1.amazonaws.com/prod?chat_room_id=${user.zug_id}'));
 
     if (response.statusCode == 200) {
       List<dynamic> chatData = jsonDecode(response.body);
@@ -76,7 +79,7 @@ class _ChatState extends State<Chat> {
 
   // Build chat bubble based on the sender
   Widget buildChatBubble(Map<String, String> chat) {
-    bool isMe = chat['sender'] == 'Leander';
+    bool isMe = chat['sender'] == user.name;
     return Align(
       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
@@ -119,12 +122,12 @@ class _ChatState extends State<Chat> {
   Future<void> sendMessage(String message) async {
     var data = {
       'message': message,
-      'name': "Pascal"
+      'name': user.name
     };
     var stringified_message = jsonEncode(data);
     var message_json = {
       'message': stringified_message,
-      'chat_room_id': "3"
+      'chat_room_id': user.zug_id
     };
     final response = await http.post(
       Uri.parse('https://gbn3noq85h.execute-api.us-east-1.amazonaws.com/prod'),
@@ -149,7 +152,7 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat with Pascal'),
+        title: Text('Chat im Zug ${user.zug_id}'),
       ),
       body: Column(
         children: <Widget>[
