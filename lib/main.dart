@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Zugsuchen.dart';
 import 'chat.dart';
+import 'global.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -54,6 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    User user = User();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -64,6 +68,26 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Row(
+              children: [
+                const Text('Dein Name:', style: TextStyle(fontSize: 18)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: 'Name',
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        user.name = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
             // "Zug Suchen" Button
             ElevatedButton(
               onPressed: () {
@@ -89,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onChanged: (value) {
                       setState(() {
                         _station = value;
+                        user.zug_id = value; // TODO Nur zum Testen
                       });
                     },
                   ),
@@ -143,6 +168,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Chat()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
 
