@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Zugsuchen.dart';
 import 'chat.dart';
 import 'global.dart';
-
+import 'BahnhofIDs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,7 +88,11 @@ class _MyHomePageState extends State<MyHomePage> {
             // "Zug Suchen" Button
             ElevatedButton(
               onPressed: () {
-                print(ApiService().callLambdaFunction(_selectedTime.hour));
+                String station_id;
+                station_id = findeBahnhofId(_station);
+                print(findeBahnhofId(_station));
+                
+                print(ApiService().callLambdaFunction(station_id,_selectedTime.hour));
               },
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 20),
