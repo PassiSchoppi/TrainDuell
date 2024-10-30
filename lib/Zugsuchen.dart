@@ -1,10 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class ApiService {
   // Methode, um die Lambda-Funktion über das API-Gateway aufzurufen
   Future<dynamic> callLambdaFunction(String stationID,int hour) async {
-    final url = Uri.parse('https://6gb4c52s5m.execute-api.us-east-1.amazonaws.com/Stufe1/TrainDuelDB/timetable/8000105/241029/$hour');
+    final DateTime now = DateTime.now();
+    final DateFormat formatter = DateFormat('yyMMdd');
+    final String formatted = formatter.format(now);
+    final url = Uri.parse('https://6gb4c52s5m.execute-api.us-east-1.amazonaws.com/Stufe1/TrainDuelDB/timetable/$stationID/$formatted/$hour');
 
     try {
       // Sende eine POST-Anfrage an den API-Gateway-Endpoint

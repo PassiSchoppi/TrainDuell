@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<List<dynamic>> _searchResults = [];
   String? _selectedId;
   TimeOfDay _selectedTime = TimeOfDay.now(); // Uhrzeit Placeholder
-
+  dynamic Infos_Station;
   User user = User();
 
   // Funktion zur Auswahl der Uhrzeit
@@ -157,7 +157,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       itemCount: _searchResults.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(_searchResults[index][0]), // Display the first element (name) of the tuple
+                          title: Text(_searchResults[index][
+                              0]), // Display the first element (name) of the tuple
                           onTap: () => _onSelectItem(
                               _searchResults[index]), // Handle selection
                         );
@@ -188,8 +189,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 // "Zug Suchen" Button
                 ElevatedButton(
                   onPressed: () {
-                    print(ApiService()
-                        .callLambdaFunction('123', _selectedTime.hour));
+                    ApiService()
+                        .callLambdaFunction(
+                            _selectedId.toString(), _selectedTime.hour)
+                        .then((result) {
+                      setState(() {
+                        Infos_Station = result;
+                      });
+                    });
                   },
                   style: ElevatedButton.styleFrom(
                     textStyle: const TextStyle(fontSize: 20),
@@ -198,18 +205,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(height: 20),
                 // Platzhalter für weitere Informationen
-                Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
+                if (Infos_Station == Null)
+                  Column(
+                    children:
+                        Infos_Station.asMap().forEach((index, value) {
+                         print(Infos_Station);
+                          return Text('value.toString()');
+                        }).toList(),
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Weitere Informationen',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
