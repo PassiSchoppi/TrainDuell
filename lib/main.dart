@@ -155,6 +155,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(height: 16),
                 if (_searchResults.isNotEmpty)
+                  const Text('Wähle einen Bahnhof aus:'),
+                if (_searchResults.isNotEmpty)
                   Container(
                     constraints: BoxConstraints(
                       // Dynamically set the height to fit content or max out at 200.0
@@ -168,8 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       itemCount: _searchResults.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(_searchResults[index][
-                              0]), // Display the first element (name) of the tuple
+                          title: Text(_searchResults[index][0]), // Display the first element (name) of the tuple
                           onTap: () => _onSelectItem(
                               _searchResults[index]), // Handle selection
                         );
