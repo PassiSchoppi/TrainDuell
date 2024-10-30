@@ -42,6 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String? _selectedId;
   TimeOfDay _selectedTime = TimeOfDay.now(); // Uhrzeit Placeholder
 
+  User user = User();
+
   // Funktion zur Auswahl der Uhrzeit
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
@@ -80,14 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
       _searchResults = []; // Clear search results after selection
       // _controller.clear(); // Optionally clear the input field
       _controller.text = name;
+      user.zug_id = id; // TODO Nur zum Testen
     });
     print("Selected ID: $_selectedId");
   }
 
   @override
   Widget build(BuildContext context) {
-    User user = User();
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -134,9 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         onChanged: (value) {
                           _onSearchChanged();
-                          setState(() {
-                            user.zug_id = value; // TODO Nur zum Testen
-                          });
                         },
                       ),
                     ),
