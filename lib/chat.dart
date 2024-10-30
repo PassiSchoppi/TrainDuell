@@ -83,8 +83,8 @@ class _ChatState extends State<Chat> {
     return Align(
       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         decoration: BoxDecoration(
           color: isMe ? Colors.blueAccent : Colors.grey[300],
           borderRadius: BorderRadius.circular(12),
@@ -99,7 +99,7 @@ class _ChatState extends State<Chat> {
                 color: isMe ? Colors.white : Colors.black,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               chat['message']!,
               style: TextStyle(
@@ -173,7 +173,7 @@ class _ChatState extends State<Chat> {
                 Expanded(
                   child: TextField(
                     controller: messageController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Type a message...',
                       border: OutlineInputBorder(),
                     ),

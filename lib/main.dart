@@ -3,6 +3,7 @@ import 'Zugsuchen.dart';
 import 'chat.dart';
 import 'global.dart';
 import 'BahnhofIDs.dart';
+import 'strecke.dart';
 
 void main() {
   runApp(const MyApp());
@@ -117,18 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
-                // "Zug Suchen" Button
-                ElevatedButton(
-                  onPressed: () {
-                    print(ApiService()
-                        .callLambdaFunction('123', _selectedTime.hour));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  child: const Text('Zug Suchen'),
-                ),
                 const SizedBox(height: 20),
                 // Eingestiegen in: Gera
                 Row(
@@ -197,6 +186,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
+                SizedBox(height: 20),
+                // "Zug Suchen" Button
+                ElevatedButton(
+                  onPressed: () {
+                    print(ApiService()
+                        .callLambdaFunction('123', _selectedTime.hour));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  child: const Text('Zug Suchen'),
+                ),
                 const SizedBox(height: 20),
                 // Platzhalter für weitere Informationen
                 Container(
@@ -224,11 +225,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Chat()),
+                          MaterialPageRoute(builder: (context) => Strecke()),
                         );
                       },
                       style: ElevatedButton.styleFrom(),
-                      child: const Text('Weiter zum Strecke'),
+                      child: const Text('Weiter zur Strecke'),
                     ),
                   ],
                 ),
