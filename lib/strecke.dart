@@ -23,33 +23,8 @@ class _StreckeState extends State<Strecke> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> stations = [
-      {"id": 1, "time": "08:00", "station": "Station A"},
-      {"id": 2, "time": "08:15", "station": "Station B"},
-      {"id": 3, "time": "08:30", "station": "Station C mit einem langen Namen"},
-      {"id": 4, "time": "08:45", "station": "München Hbf"},
-      {"id": 1, "time": "08:00", "station": "Station A"},
-      {"id": 2, "time": "08:15", "station": "Station B"},
-      {"id": 3, "time": "08:30", "station": "Station C mit einem langen Namen"},
-      {"id": 4, "time": "08:45", "station": "München Hbf"},
-      {"id": 1, "time": "08:00", "station": "Station A"},
-      {"id": 2, "time": "08:15", "station": "Station B"},
-      {"id": 3, "time": "08:30", "station": "Station C mit einem langen Namen"},
-      {"id": 4, "time": "08:45", "station": "München Hbf"},
-      {"id": 1, "time": "08:00", "station": "Station A"},
-      {"id": 2, "time": "08:15", "station": "Station B"},
-      {"id": 3, "time": "08:30", "station": "Station C mit einem langen Namen"},
-      {"id": 4, "time": "08:45", "station": "München Hbf"},
-      {"id": 1, "time": "08:00", "station": "Station A"},
-      {"id": 2, "time": "08:15", "station": "Station B"},
-      {"id": 3, "time": "08:30", "station": "Station C mit einem langen Namen"},
-      {"id": 4, "time": "08:45", "station": "München Hbf"},
-      {"id": 1, "time": "08:00", "station": "Station A"},
-      {"id": 2, "time": "08:15", "station": "Station B"},
-      {"id": 3, "time": "08:30", "station": "Station C mit einem langen Namen"},
-      {"id": 4, "time": "08:45", "station": "München Hbf"},
-    ];
-    final int entryStationId = 2; // Example: the user enters at Station B
+    final stations = user.halte;
+    final String entryStation = user.einstieg;
 
     return Scaffold(
       appBar: AppBar(
@@ -68,12 +43,12 @@ class _StreckeState extends State<Strecke> {
             const SizedBox(height: 20),Column(
                 children: stations.asMap().entries.map((entry) {
                   int index = entry.key;
-                  Map<String, dynamic> station = entry.value;
-                  bool isAt = station['id'] == entryStationId;
+                  String station = entry.value;
+                  bool isAt = station == entryStation;
                   bool isLastStation = index == stations.length - 1;
                   bool availableForExit = false;
                   for (var i = 0; i < stations.length; i++) {
-                    if (i < index && stations[i]['id'] == entryStationId) {
+                    if (i < index && stations[i] == entryStation) {
                       availableForExit = true;
                     }
                   }
@@ -82,10 +57,10 @@ class _StreckeState extends State<Strecke> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // Arrival time
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0, left: 10.0),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 20.0, left: 10.0),
                         child: Text(
-                          station['time']!,
+                          '00:00', // station['time']!,
                           style: TextStyle(fontSize: 24),
                         ),
                       ),
@@ -113,8 +88,9 @@ class _StreckeState extends State<Strecke> {
                                         size: 30,
                                       ),
                                     )
-                                  : const CircleAvatar(
+                                  : CircleAvatar(
                                       radius: 15,
+                                      backgroundColor: availableForExit ? null : Colors.black12,
                                     ),
                           // Draw a line below the dot for all but the last station
                           if (index < stations.length - 1)
@@ -129,9 +105,9 @@ class _StreckeState extends State<Strecke> {
                       // Station name
                       Expanded(
                         child: Text(
-                          station['station']!,
+                          station, //['station']!,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontSize: 24),
+                          style: TextStyle(fontSize: 24, color: (availableForExit || isAt) ? null : Colors.black12),
                         ),
                       ),
                       availableForExit
@@ -144,7 +120,8 @@ class _StreckeState extends State<Strecke> {
                     ],
                   );
                 }).toList(),
-              )
+              ),
+            const SizedBox(height: 20),
 
           ]),
     )));

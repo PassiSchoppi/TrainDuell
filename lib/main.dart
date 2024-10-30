@@ -194,7 +194,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             _selectedId.toString(), _selectedTime.hour)
                         .then((result) {
                       setState(() {
+                        print('result:');
                         Infos_Station = result;
+                        print(Infos_Station);
                       });
                     });
                   },
@@ -205,35 +207,62 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(height: 20),
                 // Platzhalter für weitere Informationen
-                if (Infos_Station == Null)
+                if (Infos_Station != null)
                   Column(
                     children:
-                        Infos_Station.asMap().forEach((index, value) {
-                         print(Infos_Station);
-                          return Text('value.toString()');
-                        }).toList(),
+                        Infos_Station.asMap().entries.map<Widget>((entry) {
+                      print('Infos_Station:');
+                      print(Infos_Station);
+                      var endHalt = '';
+                      if (entry.value['kommende_halte'] ==
+                          'Der Zug endet hier.') {
+                        return const SizedBox(height: 0);
+                      } else {
+                        endHalt = entry.value['kommende_halte'].last;
+                      }
+                      var alleHalte = [];
+                      if(entry.value['vergangene_halte'] != 'Der Zug startet hier.') {
+                        alleHalte =
+                            new List.from(entry.value['vergangene_halte'])
+                              ..addAll([entry.value['abfahrt_von']])
+                              ..addAll(entry.value['kommende_halte']);
+                      }else{
+                        alleHalte = new List.from([entry.value['abfahrt_von']])
+                          ..addAll(entry.value['kommende_halte']);
+                      }
+                      return Container(
+                          padding: EdgeInsets.all(16.0), // Optional: adds padding inside the container
+                        margin: EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Colors.grey[800] // Darker gray for dark mode
+                                : Colors.grey[300], // Lighter gray for light mode
+                            borderRadius: BorderRadius.circular(12.0), // Rounds the corners
+                          ),
+                          child: Row(children: [
+                            Expanded(
+                              child: Text('${entry.value['zug'].toString()} nach $endHalt', style: TextStyle(fontSize: 25),
+                            ),
+                            ),
+                        ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                user.zug_id = entry.value['zug_id'].toString();
+                                user.halte = alleHalte;
+                                user.zug_display_name = '${entry.value['zug'].toString()} nach $endHalt';
+                                user.einstieg = entry.value['abfahrt_von'];
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Strecke()),
+                                );
+                              });
+                            },
+                            child: const Icon(Icons.send))
+                      ]),);
+                    }).toList(),
+
                   ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(),
-                      child: const Text('Zurück'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Strecke()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(),
-                      child: const Text('Weiter zur Strecke'),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

@@ -152,7 +152,7 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat im Zug ${user.zug_id}'),
+        title: Text('Chat im ${user.zug_display_name}'),
       ),
       body: Column(
         children: <Widget>[

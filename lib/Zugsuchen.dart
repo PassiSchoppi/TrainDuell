@@ -19,6 +19,7 @@ class ApiService {
       // Überprüfe den Statuscode der Antwort
       if (response.statusCode == 200) {
         // Erfolgreiche Antwort, parse das Ergebnis
+        print(jsonDecode(response.body));
         return jsonDecode(response.body);
       } else {
         // Fehlerbehandlung für den Fall eines unerwarteten Statuscodes
