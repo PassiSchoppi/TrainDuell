@@ -7,7 +7,6 @@ def lambda_handler(event, context):
     try:
         body = json.loads(event['body'])
         search_term = body.get("search_term", "").strip()
-
         if not search_term:
             return {
                 "statusCode": 400,
@@ -18,10 +17,8 @@ def lambda_handler(event, context):
             "statusCode": 400,
             "body": json.dumps({"error": "Invalid request format. Must be JSON with 'search_term'."})
         }
-
     # Step 2: Find the index of the first matching prefix
     start_idx = bisect.bisect_left(sorted_data, (search_term, ))
-
     # Step 3: Collect all tuples starting with the search term as a prefix
     matching_entries = []
     for name, id_num in sorted_data[start_idx:]:
@@ -29,7 +26,6 @@ def lambda_handler(event, context):
             matching_entries.append((name, id_num))
         else:
             break  # Stop once names no longer match the prefix
-
     # Step 4: Return matching entries as JSON response
     return {
         "statusCode": 200,

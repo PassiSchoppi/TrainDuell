@@ -15,10 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'TrainDuel',
       theme: ThemeData(
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromRGBO(236, 0, 22, 2)),
+        ColorScheme.fromSeed(seedColor: Color.fromRGBO(236, 0, 22, 2)),
         useMaterial3: true,
       ),
       home: const MyHomePage(
