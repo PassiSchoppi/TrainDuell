@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'global.dart';
+import 'dart:async';
 
 class Chat extends StatefulWidget {
 
@@ -21,7 +22,11 @@ class _ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
-    fetchChats();
+    const oneMinute = Duration(seconds: 3);
+    Timer.periodic(oneMinute, (Timer t) {
+      fetchChats();
+    });
+
   }
 
   // Fetch latest chats from the server

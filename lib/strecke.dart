@@ -1,4 +1,3 @@
-import 'dart:ffi' as ffi; // Alias for the FFI library
 import 'dart:ui'; // Import UI without alias
 import 'package:flutter/material.dart';
 import 'chat.dart';

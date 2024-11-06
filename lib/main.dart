@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Zugsuchen.dart';
-import 'chat.dart';
 import 'global.dart';
 import 'BahnhofIDs.dart';
 import 'strecke.dart';
