@@ -22,11 +22,7 @@ class _ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
-    const oneMinute = Duration(seconds: 3);
-    Timer.periodic(oneMinute, (Timer t) {
-      fetchChats();
-    });
-
+    fetchChats();
   }
 
   // Fetch latest chats from the server
@@ -175,6 +171,14 @@ class _ChatState extends State<Chat> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.refresh),
+                  onPressed: () {
+                    setState(() {
+                      fetchChats();
+                    });
+                  },
+                ),
                 Expanded(
                   child: TextField(
                     controller: messageController,
