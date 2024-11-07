@@ -8,7 +8,7 @@ class ApiService {
     final DateTime now = DateTime.now();
     final DateFormat formatter = DateFormat('yyMMdd');
     final String formatted = formatter.format(now);
-    final url = Uri.parse('https://6gb4c52s5m.execute-api.us-east-1.amazonaws.com/Stufe1/TrainDuelDB/timetable/$stationID/$formatted/$hour');
+    final url = Uri.parse('https://6gb4c52s5m.execute-api.us-east-1.amazonaws.com/Stufe1/TrainDuelDB/timetable/$stationID/$formatted/${hour.toString().padLeft(2,"0")}');
 
     try {
       // Sende eine POST-Anfrage an den API-Gateway-Endpoint
